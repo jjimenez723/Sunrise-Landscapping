@@ -1,0 +1,21 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /quoteRequests/{requestId} {
+      allow create: if request.resource.data.keys().hasAll([
+        'name', 'phone', 'email', 'service', 'town', 'message', 'source', 'createdAt'
+      ])
+      && request.resource.data.name is string
+      && request.resource.data.phone is string
+      && request.resource.data.email is string
+      && request.resource.data.service is string
+      && request.resource.data.town is string
+      && request.resource.data.message is string
+      && request.resource.data.name.size() >= 2
+      && request.resource.data.email.size() >= 5;
+
+      allow read, update, delete: if false;
+    }
+  }
+}
