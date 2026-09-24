@@ -1,7 +1,7 @@
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db, isFirebaseConfigured } from "../lib/firebase";
 
-const LOCAL_QUEUE_KEY = "new-sunrise-quote-requests";
+const LOCAL_QUEUE_KEY = "sunrise-landscapping-quote-requests";
 
 export async function submitQuoteRequest(formData) {
   const request = {

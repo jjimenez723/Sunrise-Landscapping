@@ -1,4 +1,4 @@
-# Boom — New Sunrise Landscape
+# Sunrise-Landscapping — New Sunrise Landscape
 
 React + Vite landing page for New Sunrise Landscape, rebuilt from the original single-file HTML concept.
 
