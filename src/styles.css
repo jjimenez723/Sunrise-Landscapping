@@ -1074,7 +1074,7 @@ h1 span {
   overflow: hidden;
   background: #fff;
 }
-.location-card iframe {
+.location-card .location-map-frame {
   display: block;
   width: 100%;
   height: 315px;
@@ -1701,7 +1701,7 @@ h1 span {
   .areas-grid {
     gap: 35px;
   }
-  .location-card iframe {
+  .location-card .location-map-frame {
     height: 260px;
   }
   .reviews-grid {

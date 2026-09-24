@@ -1,0 +1,169 @@
+.location-map-frame {
+  position: relative;
+  overflow: hidden;
+  background: #e5ece8;
+}
+.brand-map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.brand-map__placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #e5ece8;
+}
+.brand-map__placeholder-grid {
+  position: absolute;
+  inset: -20%;
+  opacity: .45;
+  background: linear-gradient(24deg, transparent 44%, rgba(82,114,74,.18) 45%, transparent 46%), linear-gradient(112deg, transparent 48%, rgba(255,255,255,.7) 49%, transparent 50%), linear-gradient(162deg, transparent 53%, rgba(244,164,91,.18) 54%, transparent 55%);
+  background-size: 150px 150px, 190px 190px, 240px 240px;
+  transform: rotate(-8deg);
+}
+.brand-map__placeholder-label {
+  position: relative;
+  z-index: 1;
+  padding: 10px 13px;
+  border: 1px solid rgba(23,27,21,.1);
+  border-radius: 999px;
+  color: var(--muted);
+  background: rgba(251,250,247,.74);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.brand-map__loading {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 3;
+  padding: 8px 10px;
+  border: 1px solid rgba(23,27,21,.1);
+  border-radius: 999px;
+  color: var(--muted);
+  background: rgba(251,250,247,.84);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.brand-map__message {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--ink);
+  background: #e5ece8;
+  text-align: center;
+}
+.brand-map__message-mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--green);
+  font-size: 20px;
+}
+.brand-map__message strong {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+}
+.brand-map__message a {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.brand-map-marker {
+  display: block;
+  width: 78px;
+  height: 90px;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+.brand-map-marker__inner {
+  position: relative;
+  display: block;
+  width: 78px;
+  height: 90px;
+  transition: transform 180ms cubic-bezier(.23,1,.32,1);
+}
+.brand-map-marker:hover .brand-map-marker__inner, .brand-map-marker:focus-visible .brand-map-marker__inner {
+  transform: translateY(-3px) scale(1.04);
+}
+.brand-map-marker:focus-visible {
+  outline: 0;
+}
+.brand-map-marker__tail {
+  position: absolute;
+  top: 56px;
+  left: 30px;
+  z-index: 0;
+  width: 19px;
+  height: 19px;
+  border-right: 2px solid var(--orange);
+  border-bottom: 2px solid var(--orange);
+  background: var(--paper);
+  transform: rotate(45deg);
+}
+.brand-map-marker__badge {
+  position: absolute;
+  top: 0;
+  left: 7px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border: 2px solid var(--orange);
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: 0 12px 24px rgba(23,27,21,.22), 0 0 0 4px rgba(251,250,247,.72);
+}
+.brand-map-marker:focus-visible .brand-map-marker__badge {
+  box-shadow: 0 12px 24px rgba(23,27,21,.22), 0 0 0 6px rgba(82,114,74,.32);
+}
+.brand-map-marker__logo {
+  width: 40px;
+  height: 40px;
+}
+.location-map-frame .maplibregl-ctrl-group {
+  overflow: hidden;
+  border: 1px solid rgba(23,27,21,.12);
+  border-radius: 10px;
+  background: rgba(251,250,247,.92);
+  box-shadow: 0 8px 22px rgba(23,27,21,.14);
+}
+.location-map-frame .maplibregl-ctrl button {
+  width: 36px;
+  height: 36px;
+}
+.location-map-frame .maplibregl-ctrl-attrib {
+  padding: 4px 7px;
+  border-radius: 7px 0 0 0;
+  color: #596158;
+  background: rgba(251,250,247,.88);
+  font-size: 9px;
+}
+.location-map-frame .maplibregl-ctrl-attrib a {
+  color: var(--green);
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-map-marker__inner {
+    transition: none;
+  }
+}

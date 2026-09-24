@@ -17,7 +17,7 @@ Production build: `npm run build`. Preview the build: `npm run preview`.
 - Four-photo gallery with arrows, dot navigation, native touch scrolling, and an enlarged photo viewer. The portfolio viewer supports arrow keys and Escape.
 - Six-step consultation wizard directly after the ratings strip, inspired by Stone Bellisimo’s form: project, town, name, phone, email, then review. Answers persist when moving Back or editing; Who We Are follows the form. Contact hours and phone details sit beneath the wizard.
 - Service cards and footer services preselect the requested service. Town links prefill the town.
-- Embedded Google map and directions to the published home-base address.
+- Branded, lazily loaded MapLibre location map with Google directions to the published home-base address. The map retains the upstream worker-bundling fix and shows a directions fallback if it cannot load.
 - Six attributed review highlights with Google source branding and a link to the original reviews. Google wordmark and G assets are hosted locally from Google’s gstatic branding assets.
 - Larger “How can we help?” chat button and guided automated chat for services, areas, hours, pricing questions, and consultation details. The visitor reviews the completed form before sending.
 - Responsive navigation, mobile call/quote actions, keyboard focus, reduced-motion support, local photography, and local fonts.
@@ -69,6 +69,7 @@ The existing hero photo was retained at the user's request and downloaded from [
 - `src/components/ChatAssistant.jsx` — guided chat and form handoff
 - `src/components/Gallery.jsx` — four-photo carousel and native dialog viewer
 - `src/components/Brand.jsx` — SVG identity and interface icons
+- `src/components/LocationMap.jsx`, `BrandMap.jsx`, and `BrandMap.css` — lazy map loading, branded map, and map presentation
 - `src/data/site.js` — business details, photos, review highlights, shared validation
 - `src/styles.css` — responsive styles
 - `src/services/leads.js` — Firestore delivery and local draft fallback

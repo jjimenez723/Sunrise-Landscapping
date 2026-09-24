@@ -5,11 +5,12 @@ import ContactForm from "./components/ContactForm";
 import ChatAssistant from "./components/ChatAssistant";
 import SocialLinks from "./components/SocialLinks";
 import Faq from "./components/Faq";
+import LocationMap from "./components/LocationMap";
+import { storeCoordinates } from "./data/company";
 import {
   address,
   directionsUrl,
   email,
-  mapUrl,
   phone,
   phoneHref,
   portfolio,
@@ -341,12 +342,11 @@ export default function App() {
               </a>
             </div>
             <div className="location-card">
-              <iframe
-                title="Map of New Sunrise Landscape home base at 301 Maple Avenue, North Plainfield"
-                src={mapUrl}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
+              <LocationMap
+                latitude={storeCoordinates.lat}
+                longitude={storeCoordinates.lng}
+                directionsUrl={directionsUrl}
+                markerLabel="New Sunrise Landscape"
               />
               <div className="location-card__body">
                 <div className="eyebrow">
