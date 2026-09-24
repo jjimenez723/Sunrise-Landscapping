@@ -1,6 +1,3 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -10,8 +7,34 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-export const isFirebaseConfigured = Object.values(firebaseConfig).every(Boolean);
+export const isFirebaseConfigured =
+  Object.values(firebaseConfig).every(Boolean);
 
-export const db = isFirebaseConfigured
-  ? getFirestore(initializeApp(firebaseConfig))
-  : null;
+let leadStore;
+
+// Load the delivery SDK only when a configured site submits a request.
+export function getLeadStore() {
+  if (!isFirebaseConfigured)
+    throw new Error("Lead delivery is not configured.");
+  if (!leadStore) {
+    leadStore = Promise.all([
+      import("firebase/app"),
+      import("firebase/firestore"),
+    ])
+      .then(([app, firestore]) => ({
+        addDoc: firestore.addDoc,
+        collection: firestore.collection,
+        serverTimestamp: firestore.serverTimestamp,
+        db: firestore.getFirestore(
+          app.getApps().length
+            ? app.getApp()
+            : app.initializeApp(firebaseConfig),
+        ),
+      }))
+      .catch((error) => {
+        leadStore = undefined;
+        throw error;
+      });
+  }
+  return leadStore;
+}
